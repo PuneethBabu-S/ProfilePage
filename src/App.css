@@ -1,0 +1,77 @@
+/* ─── Style switcher bar ─────────────────────────────────────────────────── */
+.style-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  gap: 6px;
+  background: rgba(10,10,12,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 5px;
+}
+
+.style-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.style-btn:hover { color: #ccc; }
+
+.style-btn.active {
+  color: #fff;
+}
+
+/* Style-specific active states */
+.style-btn--editorial.active  { background: #fff; color: #000; }
+.style-btn--terminal.active   { background: #00ff55; color: #000; }
+.style-btn--bento.active      { background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; }
+
+.style-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.style-btn--editorial .style-icon {
+  border: 1.5px solid currentColor;
+  background: transparent;
+  position: relative;
+}
+.style-btn--editorial.active .style-icon {
+  background: #000;
+  border-color: #000;
+}
+.style-btn--terminal .style-icon {
+  background: transparent;
+  position: relative;
+}
+.style-btn--terminal .style-icon::after {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+@media (max-width: 500px) {
+  .style-bar { top: 12px; right: 12px; }
+  .style-btn { padding: 6px 10px; font-size: 11px; }
+}
